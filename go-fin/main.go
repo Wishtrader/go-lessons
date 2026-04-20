@@ -3,27 +3,33 @@ package main
 import "fmt"
 
 func main() {
-	transactions := [3]int{10, 5, -7}
-	banks := [2]string{"Alfa-BANK", "Techno-BANK"}
-	
-	arr := []int{1,2,3,4}
-	fmt.Println(len(arr), cap(arr))
-	
-	slice := make([]int8, 5)
-	fmt.Println(slice)
-	fmt.Println(len(slice), cap(slice))
+	transactions := []float64{}
 
-	slice2 := append(slice, 1)
-	fmt.Println(slice2)
-	fmt.Println(len(slice2), cap(slice2))
-
-	
-	slice3 := append(slice2, 2, 3)
-	fmt.Println(slice3)
-	fmt.Println(len(slice3), cap(slice3))
-
-
-	fmt.Println(transactions)
-	fmt.Println(banks)
+	for {
+		transaction := scanTransaction()
+		if transaction == 0 {
+			break
+		}
+		transactions = append(transactions, transaction)	
+	}
+	ballance := calculateBallance(transactions)
+	fmt.Printf("Your ballance: %.2f", ballance)
 }
+
+func scanTransaction() float64 {
+	fmt.Print("Enter You Transaction: ")
+	var transaction float64
+	fmt.Scan(&transaction)
+	return transaction
+}
+
+func calculateBallance(transactions []float64) float64 {
+		ballance := 0.0	
+
+		for _, value := range transactions {
+			ballance += value
+		}	
+		return ballance
+	}
+
 
