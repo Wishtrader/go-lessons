@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"soda/password/account"
+	"soda/password/files"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 	}
 	
 	myAccount.OutputPassword()
+	files.WriteFile
 }
 
 func promptData(prompt string) string {
